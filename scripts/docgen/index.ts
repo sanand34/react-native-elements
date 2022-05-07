@@ -1,28 +1,46 @@
-import fs from 'fs-extra';
+import glob from 'fast-glob';
 import path from 'path';
-import { generateComponentDocs } from './generateComponentDocs';
-import { getComponentFiles } from './getComponentFiles';
-import { generateMarkdown } from './generateMarkdown';
+import { Markdown } from './generateMarkdown';
+import { separateParent } from './parentProps';
+import { docgenParser } from './docgenParser';
+import yargs from 'yargs';
 
-const filePaths: string[] = getComponentFiles();
-const componentDocs = generateComponentDocs(filePaths);
+const rootPath = path.join(__dirname, '../../packages/');
 
-// Function to set the componentDocs to their respective file and storing it in the .docgen folder.
-Object.keys(componentDocs).map((componentDisplayName) => {
-  // Condition check for compound components display name.
-  const [componentName, childComponentName] = componentDisplayName.split('.');
-  let fileName = componentName;
-  if (childComponentName) {
-    fileName = childComponentName;
-  }
+const ignore = [
+  // Ignore themed package
+  rootPath + 'themed/**',
+  '**/base/**/index.tsx',
+  '**/src/*/components/**',
+  '**/__tests__/**',
+  '**/helpers/**',
+  '**/config/**',
+  '**/base/src/SearchBar/SearchBar-**',
+];
 
-  const componentDoc = componentDocs[componentDisplayName];
-  const markdownData = generateMarkdown(componentDoc, childComponentName);
-
-  // Ensuring that the directory is present, and if not, create it.
-  fs.ensureDirSync(path.join(__dirname, `../../.docgen/${componentName}`));
-  fs.outputFile(
-    path.join(__dirname, `../../.docgen/${componentName}/${fileName}.md`),
-    markdownData
+function main(sourcePath: string) {
+  const filePaths = glob.sync(
+    path.join(rootPath, sourcePath || '*/src/**/*.tsx'),
+    {
+      absolute: true,
+      ignore,
+      onlyFiles: true,
+    }
   );
-});
+
+  console.log('Found', filePaths.length, 'components');
+
+  const componentDocs = docgenParser.parse(filePaths);
+
+  Markdown.parents = separateParent(componentDocs);
+
+  componentDocs.forEach((componentDoc) => {
+    new Markdown(componentDoc).save();
+  });
+}
+
+const argv = yargs(process.argv.slice(2)).options({
+  include: { type: 'string', alias: 'i' },
+}).argv;
+
+main(argv.include);

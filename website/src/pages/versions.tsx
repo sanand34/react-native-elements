@@ -67,6 +67,7 @@ const ReleaseNotes: React.FunctionComponent<{ version: string }> = ({
   <a
     href={`https://github.com/react-native-elements/react-native-elements/releases/tag/v${version}`}
     target="_blank"
+    rel="noopener noreferrer"
   >
     Release Notes
   </a>
@@ -98,7 +99,7 @@ const Versions: React.FunctionComponent<{}> = (props) => {
         </p>
 
         <section>
-          <h3>Latest versions</h3>
+          <h3>Bleeding Edge (Stable)</h3>
           <p>
             Contains changes that are up and coming in the next feature release.
           </p>
@@ -114,29 +115,6 @@ const Versions: React.FunctionComponent<{}> = (props) => {
             </tbody>
           </table>
         </section>
-
-        {stableVersions && stableVersions.length > 0 && (
-          <section>
-            <h3>Current version (Stable)</h3>
-            <p>
-              This is the version that is configured automatically when you
-              first install this project.
-            </p>
-            <table className="versions">
-              <tbody>
-                {stableVersions.map(function (version, index) {
-                  return (
-                    <VersionItem
-                      key={index}
-                      version={version}
-                      baseUrl={siteConfig.baseUrl}
-                    />
-                  );
-                })}
-              </tbody>
-            </table>
-          </section>
-        )}
 
         {preReleaseVersions && preReleaseVersions.length > 0 && (
           <section>
@@ -159,6 +137,29 @@ const Versions: React.FunctionComponent<{}> = (props) => {
                     </td>
                   </tr>
                 ))}
+              </tbody>
+            </table>
+          </section>
+        )}
+
+        {stableVersions && stableVersions.length > 0 && (
+          <section>
+            <h3>Current version (Released)</h3>
+            <p>
+              This is the version that is configured automatically when you
+              first install this project.
+            </p>
+            <table className="versions">
+              <tbody>
+                {stableVersions.map(function (version, index) {
+                  return (
+                    <VersionItem
+                      key={index}
+                      version={version}
+                      baseUrl={siteConfig.baseUrl}
+                    />
+                  );
+                })}
               </tbody>
             </table>
           </section>
