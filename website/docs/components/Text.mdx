@@ -3,20 +3,50 @@ id: text
 title: Text
 ---
 
+import { IconsStyle } from "@site/src/components/Docs_Icons";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import { BiInfoCircle } from "react-icons/bi";
 import Usage from "../component_usage/Text.mdx";
-import Play from "../playground/Text/text.playground";
+import Play from "@site/playground/Text/text.playground";
+
+<IconsStyle />
 
 Text displays words and characters of various sizes.
 
-## Import
-
-```tsx
-import { Text } from "@rneui/themed";
-```
-
 ## Usage
+
+<div class="row inline-flex-center">
+  <div class="col col--3">
+    <h4>Import</h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`import { Text } from '@rneui/themed';`}</CodeBlock>
+  </div>
+  <div class="col col--3">
+    <h4>
+      Theme Key{" "}
+      <a href="../customizing#using-themeprovider">
+        <BiInfoCircle />
+      </a>
+    </h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`Text`}</CodeBlock>
+  </div>
+</div>
+
+### Icon
+
+```tsx live
+<Stack>
+  <Text h1>Heading 1</Text>
+  <Text h2>Heading 2</Text>
+  <Text h3>Heading 3</Text>
+  <Text h4>Heading 4</Text>
+</Stack>
+```
 
 <Usage />
 
@@ -33,7 +63,7 @@ import { Text } from "@rneui/themed";
 | `h3`      | boolean    | `false` | Text with Font size 28.          |
 | `h3Style` | Text Style | `{}`    | Styling when h3 is set.          |
 | `h4`      | boolean    | `false` | Text with Font size 22.          |
-| `h4Style` | Text Style | `{}`    | Styling when h3 is set.          |
+| `h4Style` | Text Style | `{}`    | Styling when h4 is set.          |
 | `style`   | Text Style | `{}`    | Add additional styling for Text. |
 
 </div>

@@ -3,22 +3,62 @@ id: fab
 title: FAB
 ---
 
+import { IconsStyle } from "@site/src/components/Docs_Icons";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import { BiInfoCircle } from "react-icons/bi";
 import Usage from "../component_usage/FAB.mdx";
-import Play from "../playground/FAB/fab.playground";
+import Play from "@site/playground/FAB/fab.playground";
 
-A floating action button (FAB) performs the primary, or most common, action on a screen.
-It appears in front of all screen content, typically as a circular shape with an icon in its center.
-Also receives all [Button](https://reactnativeelements.com/docs/button#props) props.
+<IconsStyle />
 
-## Import
-
-```tsx
-import { FAB } from "@rneui/themed";
-```
+A floating action button (FAB) performs the primary, or most common, action on a screen. It appears in front of all screen content, typically as a circular shape with an icon in its center.
 
 ## Usage
+
+<div class="row inline-flex-center">
+  <div class="col col--3">
+    <h4>Import</h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`import { FAB } from '@rneui/themed';`}</CodeBlock>
+  </div>
+  <div class="col col--3">
+    <h4>
+      Theme Key{" "}
+      <a href="../customizing#using-themeprovider">
+        <BiInfoCircle />
+      </a>
+    </h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`FAB`}</CodeBlock>
+  </div>
+</div>
+
+### Variants
+
+```tsx live
+<Stack row align="center" spacing={4}>
+  <FAB
+    size="small"
+    icon={{
+      name: "place",
+      color: "white",
+    }}
+  />
+  <FAB size="small" title="Solid" />
+  <FAB
+    size="small"
+    title="Extended"
+    icon={{
+      name: "place",
+      color: "white",
+    }}
+  />
+</Stack>
+```
 
 <Usage />
 
@@ -33,8 +73,8 @@ Includes all [Button](button#props) props.
 | Name        | Type               | Default | Description                                                                            |
 | ----------- | ------------------ | ------- | -------------------------------------------------------------------------------------- |
 | `color`     | string             |         | Change the color of the FAB.                                                           |
-| `placement` | `left` or `right`  |         | FAB placement at bottom, (optional) use [`style`](#style) in case of custom placement. |
-| `size`      | `small` or `large` | `large` | Change Size of FAB.                                                                    |
+| `placement` | `left` \| `right`  |         | FAB placement at bottom, (optional) use [`style`](#style) in case of custom placement. |
+| `size`      | `small` \| `large` | `large` | Change Size of FAB.                                                                    |
 | `style`     | View Style         |         | Style for FAB                                                                          |
 | `upperCase` | boolean            |         | Transform Extended Label text to uppercase.                                            |
 | `visible`   | boolean            | `true`  | Decide the visibility of the FAB.                                                      |

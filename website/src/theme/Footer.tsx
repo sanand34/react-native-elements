@@ -22,13 +22,18 @@ export default function () {
                 </a>
               </li>
               <li className="footer__item">
-                <a className="footer__link-item" href="/docs/overview">
-                  Components
+                <a className="footer__link-item" href="/blog">
+                  Blogs
                 </a>
               </li>
               <li className="footer__item">
-                <a className="footer__link-item" href="/docs/universe">
-                  Universal Components
+                <a className="footer__link-item" href="/docs/customizing">
+                  Customizing
+                </a>
+              </li>
+              <li className="footer__item">
+                <a className="footer__link-item" href="/migration">
+                  Migration Guides
                 </a>
               </li>
             </ul>
@@ -64,17 +69,17 @@ export default function () {
             <ul className="footer__items clean-list">
               <li className="footer__item">
                 <a
-                  href="https://react-native-elements-slack.herokuapp.com/"
+                  href="https://discord.com/invite/e9RBHjkKHa"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer__link-item"
                 >
-                  Slack
+                  Discord server
                 </a>
               </li>
               <li className="footer__item">
                 <a
-                  href="https://twitter.com/rne_org"
+                  href="https://twitter.com/rn_elements"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer__link-item"
@@ -128,7 +133,7 @@ export default function () {
         <div className="footer__bottom text--center">
           <div className="margin-bottom--sm">
             <Link
-              to="https://opencollective.com/react-native-elements"
+              to="https://twitter.com/rn_elements"
               className="button button--primary button--md  margin-horiz--sm margin-vert--sm "
               style={{ backgroundColor: '#1DA1F2', color: 'white' }}
             >
@@ -152,13 +157,13 @@ export default function () {
               </svg>
             </Link>
           </div>
-          <div className="margin-bottom--sm">
+          {/* <div className="margin-bottom--sm">
             <img
               src="/img/logo.png"
               alt=""
               className="themedImage_node_modules-@docusaurus-theme-classic-lib-next-theme-ThemedImage-styles-module themedImage--dark_node_modules-@docusaurus-theme-classic-lib-next-theme-ThemedImage-styles-module footer__logo"
             />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="text--center"></div>

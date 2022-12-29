@@ -40,26 +40,6 @@ export interface SkeletonProps extends ViewProps {
   LinearGradientComponent?: React.ComponentType<any>;
 }
 
-/**
- * A placeholder preview for content before the data gets loaded, an alternative for spinners.
- *
- * @usage
- *
- * ### Variants
- * The component supports 2 shape variants, i.e. `circle`, `rectangle`.
- * ```tsx live
- * <Skeleton width={120} height={40} />
- * <Skeleton circle width={40} height={40} />
- * ```
- * ### Animations
- * By default, the skeleton pulsates, but you can change the animation to a wave or disable it entirely.
- * ```tsx live
- * <Skeleton animation="pulse"width={80} height={40} />
- * <Skeleton LinearGradientComponent={LinearGradient} animation="wave"width={80} height={40} />
- * <Skeleton animation="none"width={80} height={40} />
- * ```
- *
- */
 export const Skeleton: RneFunctionComponent<SkeletonProps> = ({
   circle,
   width = '100%',

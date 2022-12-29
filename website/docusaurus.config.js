@@ -2,7 +2,7 @@
 const config = {
   title: 'React Native Elements' /* title for your website */,
   tagline: 'Cross Platform React Native UI Toolkit',
-  url: 'https://reactnativeelements.com/' /* your website url */,
+  url: 'https://reactnativeelements.com' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   projectName: 'react-native-elements',
   organizationName: 'react-native-elements',
@@ -11,18 +11,18 @@ const config = {
   favicon: '/img/website/logo.png',
 
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
-  scripts: [
-    'https://buttons.github.io/buttons.js',
-    { src: 'https://snack.expo.io/embed.js', defer: true },
-  ],
+  scripts: [{ src: 'https://snack.expo.io/embed.js', defer: true }],
   themes: ['@docusaurus/theme-live-codeblock'],
   plugins: [
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        fromExtensions: ['html'],
-      },
-    ],
+    // [
+    //   '@docusaurus/plugin-client-redirects',
+    // {
+    // fromExtensions: ['html'],
+    // redirects: [
+    // /docs/oldDoc -> /docs/newDoc
+    // ],
+    // },
+    // ],
     './plugins/react-native-elements-web.js',
   ],
   presets: [
@@ -33,8 +33,19 @@ const config = {
         googleAnalytics: {
           trackingID: 'UA-173589068-1',
         },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['**/component_usage/**'],
+        },
         docs: {
+          exclude: ['**/component_usage/**'],
           path: 'docs',
+          versions: {
+            current: {
+              label: 'Bleeding Edge 🚧',
+            },
+          },
           routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.ts'),
           remarkPlugins: [require('./plugins/remark-snackplayer')],
@@ -48,6 +59,7 @@ const config = {
     ],
   ],
   themeConfig: {
+    image: '/img/website/seo.png',
     liveCodeBlock: {
       playgroundPosition: 'top',
     },
@@ -55,26 +67,14 @@ const config = {
       id: 'support_us',
       content:
         'If you like React Native Elements, give it a  <a target="_blank" rel="noopener noreferrer" href="https://github.com/react-native-elements/react-native-elements">star on GitHub!</a> ⭐' +
-        ' and follow us on <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/rn_elements">Twitter</a>!',
+        ' and join the <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/e9RBHjkKHa">Discord server</a>!',
       backgroundColor: 'var(--ifm-hero-background-color)',
       textColor: 'var(--ifm-navbar-link-color)', // Defaults to `#000`.
       isCloseable: false,
     },
     colorMode: {
-      defaultMode: 'dark',
+      defaultMode: 'light',
       disableSwitch: false,
-      // switchConfig: {
-      //   darkIcon: '🌙',
-      //   darkIconStyle: {
-      //     marginLeft: '2px',
-      //   },
-      //   // Unicode icons such as '\u2600' will work
-      //   // Unicode with 5 chars require brackets: '\u{1F602}'
-      //   lightIcon: '🌞',
-      //   lightIconStyle: {
-      //     marginLeft: '1px',
-      //   },
-      // },
     },
     navbar: {
       title: 'React Native Elements',
@@ -82,11 +82,11 @@ const config = {
         alt: 'React Native Elements Logo',
         src: '/img/website/logo.png',
       },
-      hideOnScroll: true,
+      // hideOnScroll: true,
       items: [
         {
           type: 'docsVersionDropdown',
-          position: 'left',
+          position: 'right',
           dropdownItemsAfter: [{ to: 'versions', label: 'All versions' }],
           // Do not add the link active class when browsing docs.
           dropdownActiveClassDisabled: true,
@@ -95,7 +95,7 @@ const config = {
         // { to: 'docs/', label: 'Docs', position: 'right' },
         // { to: 'help', label: 'Help', position: 'right' },
         // { to: 'blog', label: 'Blog', position: 'right' },
-        { type: 'search', position: 'right' },
+        { type: 'search', position: 'left' },
         {
           href: 'https://github.com/sponsors/react-native-elements',
           // label: 'Sponsor',
@@ -109,6 +109,13 @@ const config = {
           position: 'right',
           className: 'header-twitter-link',
           'aria-label': 'Twitter',
+        },
+        {
+          href: 'https://discord.gg/e9RBHjkKHa',
+          // label: 'Discord',
+          position: 'right',
+          className: 'header-discord-link',
+          'aria-label': 'Discord server',
         },
         {
           href: 'https://github.com/react-native-elements/react-native-elements',
@@ -125,11 +132,10 @@ const config = {
       defaultLanguage: 'typescript',
     },
     algolia: {
-      appId: 'react_native_elements',
-      apiKey: '89e04a9445d16350e100c2d2421f2d39',
+      appId: 'RE3E65KUI0',
+      apiKey: 'dbc0364e21346919060006f77fd462f1',
       indexName: 'react_native_elements',
     },
-
     footer: {
       style: 'dark',
       logo: {
@@ -157,8 +163,12 @@ const config = {
           title: 'Community',
           items: [
             {
-              label: 'Chat with us on Slack',
-              to: 'https://react-native-elements-slack.herokuapp.com/',
+              label: 'Join discord server',
+              to: 'https://discord.com/invite/e9RBHjkKHa',
+            },
+            {
+              label: 'Discord Server',
+              to: '/discord',
             },
             {
               label: 'Submit a bug or feature',

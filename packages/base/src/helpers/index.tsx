@@ -11,22 +11,35 @@ const Screen = Dimensions.get('window');
 const ScreenWidth = Screen.width;
 const ScreenHeight = Screen.height;
 const isIOS = Platform.OS === 'ios';
+const getBehaviorType = Platform.OS === 'ios' ? 'padding' : 'height';
+
+export type StringOmit<K extends string> = K | Omit<string, K>;
 
 export type RneFunctionComponent<T> = React.FunctionComponent<
   T & {
-    theme?: {
-      colors: Colors;
-    };
+    theme?: Theme;
     children?: React.ReactNode | undefined;
   }
 >;
 
-export const defaultTheme = {
+export interface ThemeSpacing {
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+}
+
+export const defaultSpacing = { xs: 2, sm: 4, md: 8, lg: 12, xl: 24 };
+
+export const defaultTheme: Theme = {
   colors: lightColors,
+  spacing: defaultSpacing,
 };
 
 export type Theme = {
   colors: Colors;
+  spacing: ThemeSpacing;
 };
 
 export const androidRipple = (
@@ -60,8 +73,11 @@ export {
   lightColors,
   darkColors,
   color,
+  getBehaviorType,
   registerCustomIconType,
 };
 
 export { default as BackgroundImage } from './BackgroundImage';
 export { default as fonts } from './fonts';
+
+export { makeStyles } from './makeStyles';
